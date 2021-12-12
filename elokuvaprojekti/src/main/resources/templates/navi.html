@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Rautasen upea elokuvalistaus</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<nav th:fragment="navi">
+			<h2><a href="/" id="etusivu">Elokuvalistaus</a></h2>
+			<div class="navijaotsikot">
+				<div class="navotsikot" sec:authorize="hasAuthority('ADMIN')"><p>Listaa:</p><p>Lisää:</p></div>
+				<ul sec:authorize="isAuthenticated()">
+					<li><a href="/elokuvalista" class="toplinks">elokuvat</a>
+					<ul class="bottomlinks" sec:authorize="hasAuthority('ADMIN')">
+						<li><a href="/addelokuva">elokuva</a>
+					</ul>
+					<li><a href="/suoratoistopalvelut" class="toplinks">suoratoistopalvelut</a>
+					<ul class="bottomlinks" sec:authorize="hasAuthority('ADMIN')">
+						<li><a href="/addspalvelu">suoratoistopalvelu</a>
+					</ul>
+					<li><a href="/genret" class="toplinks">genret</a>
+					<ul class="bottomlinks" sec:authorize="hasAuthority('ADMIN')">
+						<li><a href="/addgenre">genre</a>
+					</ul>
+				</ul>
+				<div class="navotsikotAd" sec:authorize="hasAuthority('ADMIN')">
+					<p class="log"><a href="/logout"><img th:src="@{/css/img/logout.png}" alt="log out" /></a></p>
+					<p class="logi"><a href="/user"><img th:src="@{/css/img/user.png}" alt="user" /></a></p>
+				</div>
+				<div class="navotsikotUs" sec:authorize="hasAuthority('USER')">
+				<p class="log"><a href="/logout"><img th:src="@{/css/img/logout.png}" alt="log out" /></a> <a href="/user"><img th:src="@{/css/img/user.png}" alt="user" /></a></p>
+				</div>
+				<p class="navotikotEk" sec:authorize="!isAuthenticated()"><a href="/elokuvalista" class="toplinks">elokuvat</a>
+				<a href="/login"><img th:src="@{/css/img/login.png}" alt="log in" /></a></p>
+			</div>
+		</nav>
+
+
+	</div>
+
+</body>
+</html>

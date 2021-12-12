@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Rautasen upea elokuvalistaus</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<nav th:replace="navi :: navi"></nav>
+		<div class="sisalto">
+		<h1 th:text="${elokuva.nimi.toLowerCase()}"></h1>
+		
+		<table class="elokuvantiedot">
+			<tr>
+				<td th:if="${elokuva.Genret != null}"  th:each="genre : ${elokuva.Genret}"  th:text="${genre.nimi} + ', '">				</td>
+				<td th:if="${elokuva.julkaisuVuosi != 0}" th:text="${elokuva.julkaisuVuosi} + ', '"></td>
+				<td th:if="${elokuva.ikaraja != ''}" th:text="${elokuva.ikaraja} + ', '"></td>
+				<td th:if="${elokuva.kestoTunnit != 0}" th:text="${elokuva.kestoTunnit} + ' h, '"></td>
+				<td th:if="${elokuva.kestoMinuutit != 0}" th:text="${elokuva.kestoMinuutit} + ' min, '"></td>
+				<td th:if="${elokuva.Suoratoistopalvelut != null}" th:switch="${#lists.size(elokuva.getSuoratoistopalvelut())}">
+    				<span th:case="'0'"></span>
+    				<span th:case="'1'">Löytyy palvelusta:&nbsp</span>
+    				<span th:case="*">Löytyy palveluista:&nbsp</span></td>
+				<td th:each="spalvelu, i : ${elokuva.Suoratoistopalvelut}">
+					<span th:if="${i.index} &lt; ${elokuva.Suoratoistopalvelut.size() -1}" th:text="${spalvelu.nimi} + ', '"></span>
+					<span th:unless="${i.index} &lt; ${elokuva.Suoratoistopalvelut.size() -1}" th:text="${spalvelu.nimi}"></span>
+				</td>
+			</tr>
+		</table>
+				<p th:text="${elokuva.kuvaus}"></p>
+		<p><a th:href="@{/addTElokuva/{id}(id=${elokuva.id})}"  sec:authorize="hasAuthority('USER')">Lisää toive-listalle</a></p>
+	
+		<p><a th:href="@{/editelokuva/{id}(id=${elokuva.id})}"  sec:authorize="hasAuthority('ADMIN')">Muokkaa</a><span  sec:authorize="hasAuthority('ADMIN')"> | </span><span class="poista"><a th:href="@{/deleteelokuva/{id}(id=${elokuva.id})}"  sec:authorize="hasAuthority('ADMIN')">Poista</a></span></p>
+		</div>
+	</div>
+
+</body>
+</html>

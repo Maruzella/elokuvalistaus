@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Rautasen upea elokuvalistaus</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<nav th:replace="navi :: navi"></nav>
+		<div class="sisalto">
+			<h1>tervetuloa elokuvalistauksen pariin [[${#httpServletRequest.remoteUser}]]</h1>
+
+			<p>Elokuvalistaus on uusi palvelu, josta löydät kaikkien suoratoistopalveluiden elokuvat listattuina!
+			Rekisteröityneet käyttäjämme voivat tarkastella elokuvalistauksiamme, saavat tarkemmat tiedot kaikista elokuvista,
+			sekä voivat lisätä elokuvia omille toivelistoilleen!</p>
+			<p>Kehitteillä olevat lisäpalvelumme tulevat tuomaan palveluun entistä enemmän tajottattavaa, kun käyttäjät pääsevät 
+			arvostelemaan elokuvia, keskustelemaan niistä keskustelupalstoilla ja saavat tekoälyn tarjoamia elokuvasuosituksia.</p>
+			<p sec:authorize="!isAuthenticated()">Jos et vielä ole jäsen, näet tietokannoissamme olevat elokuvat listauksenne "elokuvat"-linkistä.
+			Saadaksesi lisätietoja tai tarkistaaksesi, mistä suoratoistopalvelusta elokuva löytyy, tarvitsee sinun vain rekisteröityä palveluumme.</p>
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Rautasen upea elokuvalistaus</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<nav th:replace="navi :: navi"></nav>
+		<div class="sisalto">
+			<h1>lisää genre</h1>
+
+			<form th:object="${genre}" th:action="@{savegenre}" class="form" action="#" method="post">
+				<label for="nimi">Nimi: </label> 
+				<input type="text" id="nimi" th:field="*{nimi}" required/><br/>
+				<input type="submit" value="Tallenna" /> <input type="reset" value="Tyhjennä">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

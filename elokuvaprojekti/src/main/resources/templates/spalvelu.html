@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Rautasen upea elokuvalistaus</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<nav th:replace="navi :: navi"></nav>
+		<div class="sisalto">
+		<h1 th:text="'elokuvat ' + ${spalvelu.nimi.toLowerCase()} + ' -suoratoistopalvelussa'"></h1>
+		
+		<table  class="listaustaulukko" th:if="${spalvelu.elokuvat.size()} >= 1">
+			<tr th:each="elokuva : ${spalvelu.elokuvat}" >
+				<td th:text="${elokuva.nimi}"></td>
+				<td><a th:href="@{/elokuva/{id}(id=${elokuva.id})}">elokuvan tiedot</a></td>
+			</tr>
+		</table>
+
+		<p th:unless="${spalvelu.elokuvat.size()} >= 1">Suoratoistopalvelussa ei elokuvia</p>
+		</div>
+	</div>
+
+</body>
+</html>

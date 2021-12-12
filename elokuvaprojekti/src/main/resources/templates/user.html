@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Rautasen upea elokuvalistaus</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<nav th:replace="navi :: navi"></nav>
+		<div class="sisalto" id="usersivu">
+			<h1>profiili</h1>
+		
+			<table class="listaustaulukko">
+				<tr><th>Käyttäjätiedot</th>
+				<tr><td th:text="'Käyttäjätunnus: ' + ${kayttaja.username}"></td></tr>
+				<tr><td th:text="'Sähköposti: ' + ${kayttaja.sposti}"></td></tr>				
+			</table>
+				
+			<table class="listaustaulukko" sec:authorize="hasAuthority('USER')" th:if="${kayttaja.toiveElokuvat.size()} >= 1" >
+				<tr><th colspan="2">Toive-elokuvat</th>
+				</tr>
+				<tr th:each="elokuva, i : ${kayttaja.toiveElokuvat}">
+						<td th:text="${elokuva.nimi}"></td>
+						<td class="poista"><a th:href="@{/deletetelokuva/{id}(id=${elokuva.id})}">Poista</a></td>
+				</tr>
+			</table><!--/* */-->
+			
+			<table class="listaustaulukko" sec:authorize="hasAuthority('ADMIN')" th:if="${kayttajat.size()} >= 1" >
+				<tr><th colspan="2">Käyttäjät</th>
+				</tr>
+				<tr th:each="kayttaja, i : ${kayttajat}">
+						<td th:text="${kayttaja.username}"></td>
+						<td class="poista"><a th:href="@{/deleteuser/{id}(id=${kayttaja.id})}" th:if="${kayttaja.role == 'USER'}">Poista</a></td>
+				</tr>
+			</table>
+			
+				<p th:unless="${kayttaja.toiveElokuvat.size()} >= 1"  sec:authorize="hasAuthority('USER')">Käyttäjällä ei toive-elokuvia</p>
+
+
+
+	
+		<!--/*<p><a th:href="@{/editelokuva/{id}(id=${elokuva.id})}"  sec:authorize="hasAuthority('ADMIN')">Muokkaa</a><span  sec:authorize="hasAuthority('ADMIN')"> | 
+		</span><span class="poista"><a th:href="@{/deleteelokuva/{id}(id=${elokuva.id})}"  sec:authorize="hasAuthority('ADMIN')">Poista</a></span></p>*/-->
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+	<title>Rautasen upea elokuvalistaus</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+	<div class="container">
+		<nav th:replace="navi :: navi"></nav>
+		<div class="sisalto">
+			<h1>lisää elokuva</h1>
+
+			<form th:object="${elokuva}" th:action="@{saveelokuva}" action="#" method="post">
+				<label for="nimi">Nimi: </label> 
+				<input type="text" id="nimi" th:field="*{nimi}" required/><br/>
+				<label th:unless="${genret.isEmpty()}" for="genret" th:text="'Genret: '"></label>
+				<div class="checkbox"><div class="row" th:each="genre : ${genret}" id="genret">
+					<input type="checkbox"th:value="${genre.id}" th:id="${genre.nimi}" name="genret">
+					<label th:for="${genre.nimi}" th:text="${genre.nimi}" class="labelcheckbox"></label><br>
+				</div></div><br/>
+				<label for="ikaraja">Ikäraja: </label> 
+				<input type="text" id="ikaraja" th:field="*{ikaraja}"/><br/>
+				<label for="julkaisuVuosi">Julkaisuvuosi: </label> 
+				<input type="text" id="julkaisuVuosi" th:field="*{julkaisuVuosi}" /><br/>
+				<label for="kuvaus">Kuvaus: </label> 
+				<textarea id="kuvaus"  th:field="*{kuvaus}" rows="7" cols="30"></textarea> <br/>
+				<label for="kestoTunnit">Tunnit: </label> 
+				<input type="text" id="kestoTunnit" th:field="*{kestoTunnit}"/><br/>
+				<label for="kestoMinuutit">Minuutit: </label> 
+				<input type="text" id="kestoMinuutit" th:field="*{kestoMinuutit}" /><br/>
+				<label for="spalvelut" th:unless="${spalvelut.isEmpty()}" th:text="'Suoratoistopalvelut: '"></label>
+				<div class="checkbox"><span class="row"  th:each="spalvelu : ${spalvelut}" id="spalvelut">
+					<input type="checkbox" th:value="${spalvelu.id}" th:id="${spalvelu.nimi}" name="spalvelut">
+					<label th:for="${spalvelu.nimi}" th:text="${spalvelu.nimi}" class="labelcheckbox"></label><br>
+				</span></div><br/>
+				<input type="submit" value="Tallenna" />   <input type="reset" value="Tyhjennä">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

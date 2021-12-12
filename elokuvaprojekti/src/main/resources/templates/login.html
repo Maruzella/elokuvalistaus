@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+       	<title>Rautasen upea elokuvalistaus</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link th:rel="stylesheet" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+		<div class="container">
+			<nav th:replace="navi :: navi"></nav>
+			<div class="sisalto">
+				<h1>kirjaudu</h1>
+        		<div th:if="${param.error}">
+            		<p>Käyttäjätunnus tai salasana virheellinen.</p>
+        		</div>
+        		<form th:action="@{/login}" method="post" class="login">
+            		<label for="username"> Käyttäjätunnus: </label><input type="text" id="username" name="username"/><br/>
+            		<label for="password"> Salasana: </label><input type="password" id="password" name="password"/><br/>
+            		<input type="submit" value="Kirjaudu"/> <input type="reset" value="Tyhjennä"/>
+        		</form>
+       		</div>
+       	</div>
+    </body>
+</html>

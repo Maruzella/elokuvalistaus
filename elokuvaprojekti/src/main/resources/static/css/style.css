@@ -1,0 +1,241 @@
+body {
+  	background-color: #444444;
+	font-family: "Lucida Console", Verdana, sans-serif;
+}
+
+.container {
+	width: 90%;
+	 margin-left: auto;
+ 	 margin-right: auto;
+ 	 background-color:rgb(155, 155, 155);
+}
+
+nav{
+	display: flex;
+	justify-content: space-between;	
+	align-items: center;
+	padding-left: 3%;
+	padding-right: 3px;
+}
+
+#etusivu {
+	color: black;
+	text-decoration: none;
+	font-family: "Lucida Handwriting";
+	text-shadow: 2px 2px 4px rgb(64, 0, 64);
+}
+
+.navijaotsikot {
+	width:70%;
+	display:flex;
+	justify-content: right;
+	font-variant: small-caps;
+	font-size: 22px;
+}
+
+.navotsikot {
+	text-align: right;
+}
+
+.navotikotEk {
+	margin-right: 20px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.navotikotEk img {
+	margin-top: 14px;
+}
+
+.navotsikotUs{
+	margin-right: 4px
+}
+
+nav a:hover {
+	text-decoration: underline;
+	cursor: context-menu;
+	color: #EEE;
+}
+
+
+ul {
+	margin: 8px 0;
+  	list-style-type: none;
+    overflow: hidden !important;
+    padding-inline-start: 0;
+}
+
+li {
+  float: left !important;
+}
+
+.toplinks {
+  	display: block;
+  	padding: 14px 15px 5px 2px !important;
+  	width: auto;
+}
+
+.bottomlinks {
+	text-decoration: none;
+  	padding: 9px 5px;
+}
+
+nav a {
+	color: #EEE;
+	text-decoration: none;
+}
+
+.log {
+    margin-block-end: 0px;
+}
+
+.logi {
+    margin-block-start: 15px;
+}
+
+table {
+	border-collapse: collapse;
+}
+.sisalto {
+	padding: 0px 10px 8px 10px;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h1 {
+	font-variant: small-caps;
+	font-size: 38px;
+    margin-block-start: 5px;
+    margin-block-end: 15px;
+    font-weight: bold;
+}
+
+.rivi {
+	  border-bottom: 1px solid black;
+}
+
+.sisalto a {
+	color: rgb(64, 0, 64);
+	text-decoration: none;
+}
+
+.sisalto a:hover {
+	text-decoration: underline;
+	cursor: context-menu;
+	color: rgb(64, 0, 64);
+}
+
+
+.listaustaulukko tr:nth-child(odd) {
+	background-color: #787b83;
+}
+
+.listaustaulukko th, td{
+	padding: 8px 15px;
+}
+
+
+
+#usersivu {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+#usersivu h1 {
+	width: 100%;
+	text-align: center;
+}
+
+#usersivu table {
+	margin: 15px;
+}
+
+.poista a {
+	color: rgb(160, 14, 54);
+	font-weight: bold;
+}
+
+
+.form label {
+	display: inline-block;
+	width: 70px;
+	margin-bottom: 10px;
+}
+
+.login label {
+	display: inline-block;
+	width: 150px;
+	margin-bottom: 10px;
+}
+
+label {
+	display: inline-block;
+	width: 190px;
+	margin-bottom: 10px;
+}
+
+textarea {
+  	vertical-align: text-top;
+  	margin-bottom: 10px;
+  	background-color: rgb(192, 192, 192);
+  	resize: none;
+	border: 2px #666666 solid;
+ 	border-radius: 3px;
+  	font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+	outline: none;
+	border: 2px black solid;
+}
+
+.checkbox {
+	display: inline-block;
+	vertical-align: text-top;
+	width: 200px;
+	padding-bottom: 8px;
+}
+
+input[type=checkbox] {
+  	vertical-align: middle;
+  	position: relative;
+ 	bottom: 1px;
+}
+
+.row {
+	display: table-row;
+}
+.labelcheckbox {
+  	display: table-cell;
+}
+
+input {
+	background-color: rgb(192, 192, 192);
+	border: 2px #666666 solid;
+	border-radius: 3px;
+	font-family: "Lucida Console", Verdana, sans-serif;
+	font-size: 14px;
+	box-sizing: border-box;
+}
+
+input:focus {
+	outline: none;
+	border: 2px black solid;
+	box-sizing: border-box;
+}
+
+input[type=submit] [type=reset] {
+	padding: 5px;
+}
+
+.elokuvantiedot td {
+    float: left;
+    padding: 2px
+}
+
